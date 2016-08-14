@@ -1,0 +1,18 @@
+version: '2'
+services:
+  web-http:
+    build:
+      context: ./http
+    depends_on:
+        - jvm-tomcat
+    ports:
+      - "443:443"
+    networks:
+      default:
+        aliases:
+          - www.example.com
+  jvm-tomcat:
+    build:
+      context: ./tomcat
+    ports:
+      - "8080:8080"
